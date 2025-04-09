@@ -1,8 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { WsClientAdapter } from './modules/currency-data-feed/ws-client.adapter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+  app.useWebSocketAdapter(new WsClientAdapter(app));
+  await app.listen(process.env.PORT ?? 3333);
 }
-bootstrap();
+bootstrap().catch((error) => {
+  console.error('Error during application bootstrap:', error);
+});
