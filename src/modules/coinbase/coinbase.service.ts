@@ -14,8 +14,8 @@ export class CoinbaseService {
       );
 
       return {
-        usdtSpot: spot.data.data.amount,
-        usdt: usdt.data.data.amount,
+        usdtSpot: Number(spot.data.data.amount),
+        usdt: Number(usdt.data.data.amount),
       };
     } catch (error) {
       console.log('Error: ', error);
