@@ -13,7 +13,7 @@ export class InvestingService {
 
     await page.setViewport({ width: 1080, height: 1024 });
 
-    let element = await page.waitForSelector('.pid-2103-bid');
+    let element = await page.waitForSelector('.pid-2103-last');
 
     const usdtSpot = await element?.evaluate((el) => el.textContent);
 
