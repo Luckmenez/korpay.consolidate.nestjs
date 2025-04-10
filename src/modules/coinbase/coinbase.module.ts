@@ -5,5 +5,6 @@ import { CoinbaseController } from './coinbase.controller';
 @Module({
   controllers: [CoinbaseController],
   providers: [CoinbaseService],
+  exports: [CoinbaseService],
 })
 export class CoinbaseModule {}
