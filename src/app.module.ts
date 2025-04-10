@@ -4,9 +4,17 @@ import { AppService } from './app.service';
 import { InvestingModule } from './modules/investing/investing.module';
 import { CoinbaseModule } from './modules/coinbase/coinbase.module';
 import { CurrencyDataFeedModule } from './modules/currency-data-feed/currency-data-feed.module';
+import { ConsolidateModule } from './modules/consolidate/consolidate.module';
+import { ConsolidationModule } from './modules/consolidation/consolidation.module';
 
 @Module({
-  imports: [InvestingModule, CoinbaseModule, CurrencyDataFeedModule],
+  imports: [
+    InvestingModule,
+    CoinbaseModule,
+    CurrencyDataFeedModule,
+    ConsolidateModule,
+    ConsolidationModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
