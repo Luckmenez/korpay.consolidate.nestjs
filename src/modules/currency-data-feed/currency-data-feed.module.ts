@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { CurrencyDataFeedGateway } from './currency-data-feed.service';
+import { CurrencyDataFeedService } from './currency-data-feed.service';
 import { CurrencyDataFeedController } from './currency-data-feed.controller';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
+  imports: [HttpModule],
   controllers: [CurrencyDataFeedController],
-  providers: [CurrencyDataFeedGateway],
+  providers: [CurrencyDataFeedService],
+  exports: [CurrencyDataFeedService],
 })
 export class CurrencyDataFeedModule {}
