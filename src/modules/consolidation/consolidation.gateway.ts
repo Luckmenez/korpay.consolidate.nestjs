@@ -11,7 +11,7 @@ import { ConsolidationService } from './consolidation.service';
 
 @WebSocketGateway({
   cors: {
-    origin: 'http://localhost:5173', // Permite conexões do frontend
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -46,16 +46,15 @@ export class ConsolidationGateway
         try {
           const consolidatedData =
             await this.consolidationService.getConsolidatedData();
-          console.log('Emitting event "update" with data:', consolidatedData);
-          this.server.emit('update', consolidatedData); // Envia os dados para todos os clientes conectados
+          this.server.emit('update', consolidatedData);
         } catch (error) {
           this.logger.error('Error sending consolidated data:', error);
         }
       })();
-    }, 5000); // Atualiza a cada 5 segundos
+    }, 5000);
   }
 
   onModuleDestroy() {
-    clearInterval(this.intervalId); // Limpa o intervalo ao destruir o módulo
+    clearInterval(this.intervalId);
   }
 }
