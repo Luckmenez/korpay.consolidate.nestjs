@@ -5,7 +5,12 @@ import * as puppeteer from 'puppeteer';
 export class InvestingService {
   async getUsdtData() {
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--ignore-certificate-errors',
+      ],
     });
     const page = await browser.newPage();
 
